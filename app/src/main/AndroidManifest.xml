@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EditProfileAct"></activity>
+        <activity android:name=".ArticleAct"></activity>
+        <activity android:name=".ExploreAct" />
+        <activity android:name=".EditProfileAct" />
         <activity android:name=".MyTicketDetailAct" />
         <activity android:name=".MyProfileAct" />
         <activity android:name=".SuccessBuyTicketAct" />
