@@ -163,6 +163,12 @@ public class HomeAct extends AppCompatActivity {
                 startActivity(new Intent(HomeAct.this,ExploreAct.class));
             }
         });
+        user_balance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeAct.this,TopUpAct.class));
+            }
+        });
 
     }
 
