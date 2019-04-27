@@ -16,9 +16,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class ArticleAct extends AppCompatActivity {
 
-    TextView title_artikel,desc_artikel;
+    TextView title_artikel,desc_artikel,text_date;
 
     DatabaseReference reference;
 
@@ -35,6 +38,10 @@ public class ArticleAct extends AppCompatActivity {
         desc_artikel = findViewById(R.id.text_desc);
         header_artikel = findViewById(R.id.header_article);
         btn_back = findViewById(R.id.btn_back_artikel);
+        text_date = findViewById(R.id.text_date);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = new Date();
+        text_date.setText(simpleDateFormat.format(date));
 
         Bundle bundle = getIntent().getExtras();
         final String nama_artikel = bundle.getString("nama_artikel");
