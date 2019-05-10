@@ -1,5 +1,6 @@
 package com.example.belitiketapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,16 +25,17 @@ public class TicketDetailAct extends AppCompatActivity {
             festival_ticket, short_desc_ticket;
 
     DatabaseReference reference;
-
+    private Context context;
     ImageView header_ticket_detail;
 
     LinearLayout btn_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        new UtilsSetting(this).setTheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ticket_detail);
-
+        context = this;
         btn_buy_ticket = findViewById(R.id.btn_buy_ticket);
         header_ticket_detail = findViewById(R.id.header_ticket_detail);
         btn_back = findViewById(R.id.btn_back);

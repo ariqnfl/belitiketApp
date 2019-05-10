@@ -1,5 +1,6 @@
 package com.example.belitiketapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
@@ -34,7 +35,7 @@ public class HomeAct extends AppCompatActivity {
     RecyclerView recyclerView;
     ArrayList<ArticleCard> list;
     ArticleAdapter articleAdapter;
-
+    private Context context;
     DatabaseReference reference;
 
     String USERNAME_KEY = "usernamekey";
@@ -43,10 +44,11 @@ public class HomeAct extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        new UtilsSetting(this).setTheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         getUsernameLocal();
-
+        context = this;
         recyclerView = findViewById(R.id.rv_article);
         list = new ArrayList<ArticleCard>();
         LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(HomeAct.this, LinearLayoutManager.HORIZONTAL, false);

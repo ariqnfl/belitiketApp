@@ -1,5 +1,6 @@
 package com.example.belitiketapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,9 +18,11 @@ public class MyTicketDetailAct extends AppCompatActivity {
     DatabaseReference reference;
     TextView xnama_wisata, xlokasi, xtime_wisata, xdate_wisata, xketentuan;
     LinearLayout btn_back;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        new UtilsSetting(this).setTheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_ticket_detail);
         xnama_wisata = findViewById(R.id.xnama_wisata);
@@ -28,7 +31,7 @@ public class MyTicketDetailAct extends AppCompatActivity {
         xdate_wisata = findViewById(R.id.xdate_wisata);
         xketentuan = findViewById(R.id.xketentuan);
         btn_back = findViewById(R.id.btn_back);
-
+        context = this;
         // mengambil data dari intent
         Bundle bundle = getIntent().getExtras();
         final String nama_wisata_baru = bundle.getString("nama_wisata");
@@ -59,4 +62,5 @@ public class MyTicketDetailAct extends AppCompatActivity {
             }
         });
     }
+
 }

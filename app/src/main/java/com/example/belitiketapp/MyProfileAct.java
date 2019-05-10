@@ -1,7 +1,9 @@
 package com.example.belitiketapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -22,8 +24,10 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class MyProfileAct extends AppCompatActivity {
+    private static final int SETTING_CODE = 200;
+    Button btn_edit_profile, btn_back_home, btn_sign_out, btn_setting;
     LinearLayout item_my_ticket;
-    Button btn_edit_profile, btn_back_home, btn_sign_out;
+    private Context mContext;
 
     TextView nama_lengkap, bio;
     ImageView photo_profile;
@@ -40,7 +44,9 @@ public class MyProfileAct extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        new UtilsSetting(this).setTheme();
         super.onCreate(savedInstanceState);
+        mContext = this;
         setContentView(R.layout.activity_my_profile);
         getUsernameLocal();
 
@@ -48,6 +54,7 @@ public class MyProfileAct extends AppCompatActivity {
         btn_edit_profile = findViewById(R.id.btn_edit_profile);
         btn_back_home = findViewById(R.id.btn_back_home);
         btn_sign_out = findViewById(R.id.btn_sign_out);
+        btn_setting = findViewById(R.id.btn_setting);
 
         nama_lengkap = findViewById(R.id.nama_lengkap);
         bio = findViewById(R.id.bio);
@@ -102,6 +109,12 @@ public class MyProfileAct extends AppCompatActivity {
 
             }
         });
+        btn_setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(new Intent(mContext, SettingAct.class), SETTING_CODE);
+            }
+        });
 
         btn_back_home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,5 +144,13 @@ public class MyProfileAct extends AppCompatActivity {
     public void getUsernameLocal(){
         SharedPreferences sharedPreferences = getSharedPreferences(USERNAME_KEY, MODE_PRIVATE);
         username_key_new = sharedPreferences.getString(username_key, "");
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == SETTING_CODE) {
+            recreate();
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

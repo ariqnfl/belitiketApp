@@ -1,5 +1,6 @@
 package com.example.belitiketapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -16,6 +17,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 
 public class TicketCheckoutAct extends AppCompatActivity {
@@ -30,7 +33,7 @@ public class TicketCheckoutAct extends AppCompatActivity {
     Integer sisa_balance = 0;
 
     DatabaseReference reference, reference2, reference3, reference4;
-
+    private Context context;
     String USERNAME_KEY = "usernamekey";
     String username_key = "";
     String username_key_new = "";
@@ -43,9 +46,11 @@ public class TicketCheckoutAct extends AppCompatActivity {
     Integer nomor_transaksi = new Random().nextInt();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        new UtilsSetting(this).setTheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ticket_checkout);
         getUsernameLocal();
+        context = this;
 
         // mengambil data dari intent
         Bundle bundle = getIntent().getExtras();
@@ -96,8 +101,9 @@ public class TicketCheckoutAct extends AppCompatActivity {
                 nama_wisata.setText(dataSnapshot.child("nama_wisata").getValue().toString());
                 lokasi.setText(dataSnapshot.child("lokasi").getValue().toString());
                 ketentuan.setText(dataSnapshot.child("ketentuan").getValue().toString());
-
-                date_wisata = dataSnapshot.child("date_wisata").getValue().toString();
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                Date date = new Date();
+                date_wisata = simpleDateFormat.format(date);
                 time_wisata = dataSnapshot.child("time_wisata").getValue().toString();
 
                 valuehargatiket = Integer.valueOf(dataSnapshot.child("harga_tiket").getValue().toString());
