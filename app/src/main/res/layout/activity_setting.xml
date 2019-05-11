@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingAct">
+
+    <ImageView
+        android:id="@+id/settingIcon"
+        android:layout_width="192dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/settings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="3"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settingIcon">
+
+        <Switch
+            android:id="@+id/switch_night_mode"
+            android:layout_width="305dp"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/mmedium"
+            android:text="Night Mode"
+            android:textColor="@color/grayPrimary"
+            android:textSize="20sp" />
+
+        <Switch
+            android:id="@+id/switch_big_font"
+            android:layout_width="305dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/mmedium"
+            android:text="Font Size (Big)"
+            android:textColor="@color/grayPrimary"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btn_save_setting"
+            android:layout_width="305dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/bg_btn_blue_primary"
+            android:fontFamily="@font/mmedium"
+            android:text="Save"
+            android:textColor="#FFF"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
